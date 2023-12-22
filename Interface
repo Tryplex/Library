@@ -182,7 +182,6 @@ function library:Window(name)
         Window.Size = UDim2.new(0, 207, 0, sizes[winCount] + 10)
 
         local Button = Instance.new("TextButton")
-        local UICorner = Instance.new("UICorner")
         listOffset[winCount] = listOffset[winCount] + 32
         Button.Name = "Button"
         Button.Parent = Window
@@ -200,8 +199,8 @@ function library:Window(name)
         Button.Text = name
         Button.MouseButton1Down:Connect(callback)
 
+        local UICorner = Instance.new("UICorner")
         UICorner.Parent = Button
-        UICorner.Name = "UICorner"
 
         pastSliders[winCount] = false
     end
