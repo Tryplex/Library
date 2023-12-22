@@ -138,7 +138,7 @@ function library:Window(name)
     HeaderText.ZIndex = 6 + zindex
     HeaderText.Font = Enum.Font.SourceSans
     HeaderText.Text = name or "Window"
-    HeaderText.TextColor3 = Color3.fromRGB(47, 54, 64)
+    HeaderText.TextColor3 = Color3.fromRGB(0, 0, 0)
     HeaderText.TextSize = 17.000
 
     local Minimise = Instance.new("TextButton")
@@ -165,8 +165,8 @@ function library:Window(name)
 
     Window.Name = "Window"
     Window.Parent = Header
-    Window.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
-    Window.BorderColor3 = Color3.fromRGB(47, 54, 64)
+    Window.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Window.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Window.Position = UDim2.new(0, 0, 0, 0)
     Window.Size = UDim2.new(0, 207, 0, 33)
     Window.ZIndex = 1 + zindex
@@ -263,7 +263,7 @@ function library:Window(name)
 
         ToggleButton.Name = "ToggleButton"
         ToggleButton.Parent = ToggleDescription
-        ToggleButton.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
+        ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
         ToggleButton.BorderColor3 = Color3.fromRGB(100, 0, 190)
         ToggleButton.Position = UDim2.new(1.2061069, 0, 0.0769230798, 0)
         ToggleButton.Size = UDim2.new(0, 22, 0, 22)
@@ -280,7 +280,7 @@ function library:Window(name)
         ToggleFiller.Name = "ToggleFiller"
         ToggleFiller.Parent = ToggleButton
         ToggleFiller.BackgroundColor3 = Color3.fromRGB(68, 189, 50)
-        ToggleFiller.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        ToggleFiller.BorderColor3 = Color3.fromRGB(0, 0, 0)
         ToggleFiller.Position = UDim2.new(0, 5, 0, 5)
         ToggleFiller.Size = UDim2.new(0, 12, 0, 12)
         ToggleFiller.Visible = on
@@ -399,7 +399,7 @@ function library:Window(name)
 
         Slider.Name = "Slider"
         Slider.Parent = Window
-        Slider.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
+        Slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
         Slider.BorderColor3 = Color3.fromRGB(100, 0, 190)
         Slider.Position = UDim2.new(0, 13, 0, listOffset[winCount])
         Slider.Size = UDim2.new(0, 180, 0, 6)
@@ -443,7 +443,7 @@ function library:Window(name)
         SilderFiller.Name = "SilderFiller"
         SilderFiller.Parent = Slider
         SilderFiller.BackgroundColor3 = Color3.fromRGB(76, 209, 55)
-        SilderFiller.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        SilderFiller.BorderColor3 = Color3.fromRGB(0, 0, 0)
         SilderFiller.Size = UDim2.new(0, (Slider.Size.X.Offset - 5) * ((default - min)/(max-min)), 0, 6)
         SilderFiller.ZIndex = 2 + zindex
         SilderFiller.BorderMode = Enum.BorderMode.Inset
@@ -677,8 +677,8 @@ function library:Window(name)
 
         ColorPickerFrame.Name = "ColorPickerFrame"
         ColorPickerFrame.Parent = ColorPicker
-        ColorPickerFrame.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
-        ColorPickerFrame.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        ColorPickerFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        ColorPickerFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
         ColorPickerFrame.Position = UDim2.new(1.40350854, 0, -2.84615374, 0)
         ColorPickerFrame.Size = UDim2.new(0, 158, 0, 155)
         ColorPickerFrame.ZIndex = 3 + zindex
@@ -686,7 +686,7 @@ function library:Window(name)
 
         ToggleRGB.Name = "ToggleRGB"
         ToggleRGB.Parent = ColorPickerFrame
-        ToggleRGB.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
+        ToggleRGB.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
         ToggleRGB.BorderColor3 = Color3.fromRGB(100, 0, 190)
         ToggleRGB.Position = UDim2.new(0, 125, 0, 127)
         ToggleRGB.Size = UDim2.new(0, 22, 0, 22)
@@ -699,7 +699,7 @@ function library:Window(name)
         ToggleFiller_2.Name = "ToggleFiller"
         ToggleFiller_2.Parent = ToggleRGB
         ToggleFiller_2.BackgroundColor3 = Color3.fromRGB(76, 209, 55)
-        ToggleFiller_2.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        ToggleFiller_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
         ToggleFiller_2.Position = UDim2.new(0, 5, 0, 5)
         ToggleFiller_2.Size = UDim2.new(0, 12, 0, 12)
         ToggleFiller_2.ZIndex = 4 + zindex
@@ -719,8 +719,8 @@ function library:Window(name)
 
         ClosePicker.Name = "ClosePicker"
         ClosePicker.Parent = ColorPickerFrame
-        ClosePicker.BackgroundColor3 = Color3.fromRGB(47, 54, 64)
-        ClosePicker.BorderColor3 = Color3.fromRGB(47, 54, 64)
+        ClosePicker.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        ClosePicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
         ClosePicker.Position = UDim2.new(0, 132, 0, 5)
         ClosePicker.Size = UDim2.new(0, 21, 0, 21)
         ClosePicker.Font = Enum.Font.SourceSans
