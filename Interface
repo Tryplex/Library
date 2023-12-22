@@ -202,7 +202,6 @@ function library:Window(name)
 
         UICorner.Parent = Button
         UICorner.Name = "UICorner"
-        UICorner.CornerRadius = UDim.new(10, 102)
 
         pastSliders[winCount] = false
     end
