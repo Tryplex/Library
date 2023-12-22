@@ -182,6 +182,7 @@ function library:Window(name)
         Window.Size = UDim2.new(0, 207, 0, sizes[winCount] + 10)
 
         local Button = Instance.new("TextButton")
+        local UICorner = Instance.new("UICorner")
         listOffset[winCount] = listOffset[winCount] + 32
         Button.Name = "Button"
         Button.Parent = Window
@@ -198,6 +199,10 @@ function library:Window(name)
         Button.TextWrapped = true
         Button.Text = name
         Button.MouseButton1Down:Connect(callback)
+
+        UICorner.Parent = Button
+        UICorner.Name = "UICorner"
+        UICorner.CornerRadius = UDim.new(0, 2)
 
         pastSliders[winCount] = false
     end
@@ -609,7 +614,7 @@ function library:Window(name)
             end
         end
 
-        for i,v in pairs(buttons) do
+        for i, v in pairs(buttons) do
             dropFunctions:Button(v)
         end
 
@@ -660,7 +665,7 @@ function library:Window(name)
 
         PickerCorner.Parent = ColorPicker
         PickerCorner.Name = "PickerCorner"
-        PickerCorner.CornerRadius = UDim.new(0,2)
+        PickerCorner.CornerRadius = UDim.new(0, 2)
 
         PickerDescription.Name = "PickerDescription"
         PickerDescription.Parent = ColorPicker
@@ -746,7 +751,7 @@ function library:Window(name)
 
         UICorner.Parent = Canvas
         UICorner.Name = "UICorner"
-        UICorner.CornerRadius = UDim.new(0,2)
+        UICorner.CornerRadius = UDim.new(0, 2)
 
         Cursor.Name = "Cursor"
         Cursor.Parent = Canvas
@@ -888,7 +893,7 @@ function library:Window(name)
 
         ColorCorner.Parent = Color
         ColorCorner.Name = "ColorCorner"
-        ColorCorner.CornerRadius = UDim.new(0,2)
+        ColorCorner.CornerRadius = UDim.new(0, 2)
 
         ColorSlider.Name = "ColorSlider"
         ColorSlider.Parent = Color
