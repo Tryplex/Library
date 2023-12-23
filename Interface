@@ -99,15 +99,6 @@ function library:Keybind(key)
 	end)
 end
 
-function library:Notify(name, string, value, library)
-		game:GetService("StarterGui"):SetCore("SendNotification", {
-		Title = name or "Slash UI Library",
-		Text = string,
-		Duration = value or 3.7,
-		Icon = "rbxassetid://" .. library .. or "15720625094"
-	}	)
-end
-
 function library:Window(name)
 	windowCount = windowCount + 1
 	local winCount = windowCount
