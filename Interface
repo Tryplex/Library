@@ -195,10 +195,8 @@ function library:Window(name)
 		Button.TextStrokeTransparency = 123.000
 		Button.TextWrapped = true
 		Button.Text = name
+		Button.Style = Enum.FrameStyle.RobloxRound
 		Button.MouseButton1Down:Connect(callback)
-
-		local UICorner = Instance.new("UICorner")
-		UICorner.Parent = Button
 
 		pastSliders[winCount] = false
 	end
