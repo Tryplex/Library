@@ -113,6 +113,7 @@ function library:Window(name)
 	UiWindow.Size = UDim2.new(0, 207, 0, 33)
 	UiWindow.ZIndex = 4 + zindex
 	UiWindow.Active = true
+	UiWindow.Style = Enum.FrameStyle.RobloxRound
 	Dragify(UiWindow)
 
 	xOffset = xOffset + 230
