@@ -7,7 +7,6 @@ local pastSliders = {}
 local dropdowns = {}
 local dropdownSizes = {}
 local destroyed
-
 local colorPickers = {}
 
 if game.CoreGui:FindFirstChild("SlashUiLib") then
@@ -54,29 +53,25 @@ end)
 end
 
 local function protect_gui(obj)
-if destroyed then
-	obj.Parent = game.CoreGui
+	if destroyed then
+		obj.Parent = game.CoreGui
 	return
+	end
+	if syn and syn.protect_gui then
+		syn.protect_gui(obj)
+		obj.Parent = game.CoreGui
+	elseif PROTOSMASHER_LOADED then
+		obj.Parent = get_hidden_gui()
+	else
+		obj.Parent = game.CoreGui
+	end
 end
-if syn and syn.protect_gui then
-syn.protect_gui(obj)
-obj.Parent = game.CoreGui
-elseif PROTOSMASHER_LOADED then
-obj.Parent = get_hidden_gui()
-else
-obj.Parent = game.CoreGui
-end
-end
+
 local SlashUiLib = Instance.new("ScreenGui")
-
 SlashUiLib.Name = "SlashUiLib"
-
 protect_gui(SlashUiLib)
-
 local xOffset = 20
-
 local uis = game:GetService("UserInputService")
-
 local keybindConnection
 
 function library:Destroy()
@@ -85,6 +80,7 @@ function library:Destroy()
 		keybindConnection:Disconnect()
 	end
 end
+
 function library:Hide()
 	SlashUiLib.Enabled = not SlashUiLib.Enabled
 end	
@@ -154,11 +150,11 @@ function library:Window(name)
 	Minimise.TextSize = 20.000
 	Minimise.MouseButton1Up:connect(function()
 		Window.Visible = not Window.Visible
-	if Window.Visible then
-		Minimise.Text = "_"
-	else
-		Minimise.Text = "+"
-	end
+		if Window.Visible then
+			Minimise.Text = "_"
+		else
+			Minimise.Text = "+"
+		end
 	end)
 
 	Window.Name = "Window"
@@ -168,6 +164,9 @@ function library:Window(name)
 	Window.Position = UDim2.new(0, 0, 0, 0)
 	Window.Size = UDim2.new(0, 207, 0, 33)
 	Window.ZIndex = 1 + zindex
+
+	local UICorner = Instance.new("UICorner")
+	UICorner.Parent = Window
 
 	local functions = {}
 	sizes[winCount] = 33
@@ -202,8 +201,9 @@ function library:Window(name)
 
 		pastSliders[winCount] = false
 	end
+
 	function functions:Label(text, color)
-		local color = color or Color3.fromRGB(220, 221, 225)
+		local color = color or Color3.fromRGB(255, 255, 255)
 
 		sizes[winCount] = sizes[winCount] + 32
 		Window.Size = UDim2.new(0, 207, 0, sizes[winCount] + 10)
@@ -212,9 +212,9 @@ function library:Window(name)
 		local Label = Instance.new("TextLabel")
 		Label.Name = "Label"
 		Label.Parent = Window
-		Label.BackgroundColor3 = Color3.fromRGB(220, 221, 225)
+		Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Label.BackgroundTransparency = 1.000
-		Label.BorderColor3 = Color3.fromRGB(27, 42, 53)
+		Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		Label.Position = UDim2.new(0, 0, 0, listOffset[winCount])
 		Label.Size = UDim2.new(0, 206, 0, 29)
 		Label.Font = Enum.Font.SourceSans
@@ -223,19 +223,19 @@ function library:Window(name)
 		Label.ZIndex = 2 + zindex
 
 		if type(color) == "boolean" and color then
-		spawn(function()
+			spawn(function()
 				while wait() do
 					local hue = tick() % 5 / 5
 					Label.TextColor3 = Color3.fromHSV(hue, 1, 1)
 				end
-		end)
+			end)
 		else
 			Label.TextColor3 = color
 		end
 		pastSliders[winCount] = false
-
-	return Label
+		return Label
 	end
+
 	function functions:Toggle(text, on, callback)
 		local callback = callback or function() end
 
@@ -288,6 +288,7 @@ function library:Window(name)
 		ToggleFiller.ZIndex = 2 + zindex
 		pastSliders[winCount] = false
 	end
+
 	function functions:Box(text, callback)
 		local callback = callback or function() end
 
@@ -303,7 +304,7 @@ function library:Window(name)
 		TextBox.Position = UDim2.new(0, 99, 0, listOffset[winCount])
 		TextBox.Size = UDim2.new(0, 95, 0, 26)
 		TextBox.Font = Enum.Font.SourceSans
-		TextBox.PlaceholderColor3 = Color3.fromRGB(220, 221, 225)
+		TextBox.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
 		TextBox.PlaceholderText = "..."
 		TextBox.Text = ""
 		TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -331,6 +332,7 @@ function library:Window(name)
 		BoxDescription.ZIndex = 2 + zindex
 		pastSliders[winCount] = false
 	end
+
 	function functions:Slider(text, min, max, default, callback)
 		local text = text or "Slider"
 		local min = min or 1
@@ -425,7 +427,7 @@ function library:Window(name)
 		Current.Size = UDim2.new(0, 0, 0, 18)
 		Current.Font = Enum.Font.SourceSans
 		Current.Text = tostring(default)
-		Current.TextColor3 = Color3.fromRGB(220, 221, 225)
+		Current.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Current.TextSize = 14.000
 		Current.ZIndex = 2 + zindex
 
@@ -457,7 +459,7 @@ function library:Window(name)
 		Min.Size = UDim2.new(0, 77, 0, 50)
 		Min.Font = Enum.Font.SourceSans
 		Min.Text = tostring(min)
-		Min.TextColor3 = Color3.fromRGB(220, 221, 225)
+		Min.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Min.TextSize = 14.000
 		Min.TextXAlignment = Enum.TextXAlignment.Left
 		Min.ZIndex = 2 + zindex
@@ -470,7 +472,7 @@ function library:Window(name)
 		Max.Size = UDim2.new(0, 77, 0, 50)
 		Max.Font = Enum.Font.SourceSans
 		Max.Text = tostring(max)
-		Max.TextColor3 = Color3.fromRGB(220, 221, 225)
+		Max.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Max.TextSize = 14.000
 		Max.TextXAlignment = Enum.TextXAlignment.Right
 		Max.ZIndex = 2 + zindex
@@ -537,7 +539,7 @@ function library:Window(name)
 		DownSign.Size = UDim2.new(0, 27, 0, 22)
 		DownSign.Font = Enum.Font.SourceSans
 		DownSign.Text = "^"
-		DownSign.TextColor3 = Color3.fromRGB(220, 221, 225)
+		DownSign.TextColor3 = Color3.fromRGB(255, 255, 255)
 		DownSign.TextSize = 20.000
 		DownSign.ZIndex = 4 + zindex
 		DownSign.TextYAlignment = Enum.TextYAlignment.Bottom
@@ -555,7 +557,7 @@ function library:Window(name)
 		DropdownFrame.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
 		DropdownFrame.ZIndex = 5 + zindex
 		DropdownFrame.ScrollingDirection = Enum.ScrollingDirection.Y
-		DropdownFrame.ScrollBarImageColor3 = Color3.fromRGB(220, 221, 225)
+		DropdownFrame.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255)
 		table.insert(dropdowns, DropdownFrame)
 		local dropFunctions = {}
 		local canvasSize = 0
